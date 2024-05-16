@@ -114,6 +114,7 @@ export default function CheckoutForm() {
               id="job-description"
               name="jobDescription"
               placeholder="We are looking for..."
+              //@ts-ignore
               onChange={onFormDataChange}
               className="min-h-[9.5rem]"
             />
@@ -124,6 +125,7 @@ export default function CheckoutForm() {
             </Label>
             <Textarea
               id="additional-information"
+              //@ts-ignore
               onChange={onFormDataChange}
               name="additionalInformation"
               placeholder="..."

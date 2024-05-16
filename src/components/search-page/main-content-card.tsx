@@ -1,4 +1,3 @@
-import { Button } from "../ui/button"
 import {
   Card,
   CardContent,
@@ -7,23 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card"
-import {
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-  Table,
-} from "../ui/table"
-import { MoreHorizontal } from "lucide-react"
-import { Badge } from "../ui/badge"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu"
+
 import StudentCard from "./student-card"
 import { students } from "@/utils/data"
 
