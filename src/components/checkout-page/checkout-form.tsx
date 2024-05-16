@@ -26,11 +26,11 @@ export default function CheckoutForm() {
     e.preventDefault()
     //In this test version, only send email to 1st candidate
     const candidate = candidates[0]
-    await sendEmail(formData, candidate)
     toast({
       title: "Success",
       description: "Emails have been successfully sent",
     })
+    await sendEmail(formData, candidate)
   }
 
   return (

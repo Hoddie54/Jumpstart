@@ -8,7 +8,7 @@ import {
 } from "../ui/card"
 
 import StudentCard from "./student-card"
-import { students } from "@/utils/data"
+import { candidates } from "@/utils/data"
 
 export default function MainContentCard() {
   return (
@@ -21,11 +21,11 @@ export default function MainContentCard() {
       </CardHeader>
       <CardContent>
         <div className="flex flex-wrap">
-          {students.map((student) => {
+          {candidates.map((candidate) => {
             return (
               <StudentCard
-                student={student}
-                key={student.firstName + student.secondName}
+                candidate={candidate}
+                key={candidate.firstName + candidate.secondName}
               />
             )
           })}

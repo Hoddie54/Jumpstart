@@ -1,4 +1,4 @@
-import { Student } from "@/types/student"
+import { Candidate } from "@/types/student"
 import {
   Card,
   CardContent,
@@ -16,13 +16,11 @@ import { CartContext } from "@/context/cart"
 import { useToast } from "../ui/use-toast"
 
 export type StudentCardProps = {
-  student: Student
+  candidate: Candidate
 }
 
-export default function StudentCard({ student }: StudentCardProps) {
+export default function StudentCard({ candidate }: StudentCardProps) {
   const { candidates, setCandidates } = useContext(CartContext)
-
-  console.log(candidates)
 
   const { toast } = useToast()
 
@@ -33,7 +31,7 @@ export default function StudentCard({ student }: StudentCardProps) {
     const stateDuration = 1500
 
     const elem = document.getElementById(
-      `loading-btn-${student.firstName + student.secondName}`
+      `loading-btn-${candidate.firstName + candidate.secondName}`
     )
     //@ts-ignore
     elem.classList.add(pendingClassName)
@@ -51,26 +49,26 @@ export default function StudentCard({ student }: StudentCardProps) {
     }, stateDuration)
   }
 
-  const isCandidateAlreadyInCart = candidates.includes(student)
+  const isCandidateAlreadyInCart = candidates.includes(candidate)
 
   function success() {
     if (isCandidateAlreadyInCart) {
       setCandidates((c) => {
         const newArray = [...c]
-        return newArray.filter((v) => v !== student)
+        return newArray.filter((v) => v !== candidate)
       })
       toast({
         title: "Candidated Removed",
-        description: `${student.firstName} ${student.secondName} has to removed from the cart`,
+        description: `${candidate.firstName} ${candidate.secondName} has to removed from the cart`,
       })
     } else {
       successAnimation()
       setCandidates((c) => {
-        return [...c, student]
+        return [...c, candidate]
       })
       toast({
         title: "Candidated Added",
-        description: `${student.firstName} ${student.secondName} has to added to the cart`,
+        description: `${candidate.firstName} ${candidate.secondName} has to added to the cart`,
       })
     }
   }
@@ -82,20 +80,22 @@ export default function StudentCard({ student }: StudentCardProps) {
     >
       <div>
         <CardHeader>
-          <CardTitle>{student.firstName + " " + student.secondName}</CardTitle>
+          <CardTitle>
+            {candidate.firstName + " " + candidate.secondName}
+          </CardTitle>
           {/** IMAGE */}
           <div className="w-100">
             <img
-              src={student.photoURL}
+              src={candidate.photoURL}
               className="rounded-md w-100 zoom-img"
               style={{ maxHeight: "300px" }}
             />
           </div>
           {/** ROLES */}
           <div className="flex flex-wrap">
-            {student.roles.map((role, i) => {
+            {candidate.roles.map((role, i) => {
               return (
-                <div key={student.firstName + student.secondName + i}>
+                <div key={candidate.firstName + candidate.secondName + i}>
                   <Badge className="m-1">{role}</Badge>
                 </div>
               )
@@ -108,7 +108,7 @@ export default function StudentCard({ student }: StudentCardProps) {
             <div>
               <p className="text-sm font-medium leading-none">Education</p>
               <p className="text-sm text-muted-foreground">
-                {student.education}
+                {candidate.education}
               </p>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function StudentCard({ student }: StudentCardProps) {
                 Full time experience
               </p>
               <p className="text-sm text-muted-foreground">
-                {student.workExperience}
+                {candidate.workExperience}
               </p>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function StudentCard({ student }: StudentCardProps) {
                 They're proud of...
               </p>
               <p className="text-sm text-muted-foreground">
-                {student.proudPoint}
+                {candidate.proudPoint}
               </p>
             </div>
           </div>
@@ -142,9 +142,9 @@ export default function StudentCard({ student }: StudentCardProps) {
             <p className="text-sm font-medium leading-none">
               Additional Languages:{" "}
             </p>
-            {student.additionalLanguages.map((language, i) => {
+            {candidate.additionalLanguages.map((language, i) => {
               return (
-                <div key={student.firstName + student.secondName + i}>
+                <div key={candidate.firstName + candidate.secondName + i}>
                   <Badge className="m-1" variant="outline">
                     {language}
                   </Badge>
@@ -156,7 +156,7 @@ export default function StudentCard({ student }: StudentCardProps) {
           {/** RIGHT TO WORK */}
           <div className=" flex items-center justify-between space-x-4 rounded-md border p-4">
             <p className="text-sm font-medium leading-none">Right to work</p>
-            <Badge variant="outline">{student.rightToWork}</Badge>
+            <Badge variant="outline">{candidate.rightToWork}</Badge>
           </div>
 
           {/** SALARY */}
@@ -166,7 +166,7 @@ export default function StudentCard({ student }: StudentCardProps) {
                 Salary Expectations
               </p>
               <p className="text-sm text-muted-foreground">
-                {student.salaryExpectations}
+                {candidate.salaryExpectations}
               </p>
             </div>
           </div>
@@ -174,12 +174,12 @@ export default function StudentCard({ student }: StudentCardProps) {
           <div className=" flex items-center space-x-4 rounded-md border p-4">
             <p className="text-sm font-medium leading-none">Links</p>
             <p className="text-sm font-medium leading-none">
-              <Link to={student.CVURL} target="_blank">
+              <Link to={candidate.CVURL} target="_blank">
                 CV
               </Link>
             </p>
             <p className="text-sm font-medium leading-none">
-              <Link to={student.linkedInURL} target="_blank">
+              <Link to={candidate.linkedInURL} target="_blank">
                 <LinkedinIcon height={"16px"} />
               </Link>
             </p>
@@ -189,7 +189,7 @@ export default function StudentCard({ student }: StudentCardProps) {
       <CardFooter style={{ justifySelf: "flex-end" }}>
         <Button
           className="w-full loading-btn"
-          id={`loading-btn-${student.firstName + student.secondName}`}
+          id={`loading-btn-${candidate.firstName + candidate.secondName}`}
           onClick={success}
         >
           <span className="loading-btn__text">

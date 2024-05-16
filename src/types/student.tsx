@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-export type Student = {
+export type Candidate = {
   firstName: string
   secondName: string
   emailAddress: string

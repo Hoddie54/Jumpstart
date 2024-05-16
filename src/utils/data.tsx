@@ -1,7 +1,7 @@
-import { Student, Role, RightToWork } from "@/types/student"
+import { Candidate, Role, RightToWork } from "@/types/student"
 import { FormData } from "../types/matching"
 
-export const students: Student[] = [
+export const candidates: Candidate[] = [
   {
     firstName: "Nikki",
     secondName: "Palmer",

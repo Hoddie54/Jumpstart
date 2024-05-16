@@ -1,9 +1,9 @@
-import { Student } from "@/types/student"
+import { Candidate } from "@/types/student"
 import { createContext, ReactNode, useState } from "react"
 
 interface CartContextType {
-  candidates: Student[]
-  setCandidates: React.Dispatch<React.SetStateAction<Student[]>>
+  candidates: Candidate[]
+  setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -16,7 +16,7 @@ type ContextProviderProps = {
 }
 
 export const CartContextProvider = ({ children }: ContextProviderProps) => {
-  const [students, setStudents] = useState<Student[]>([])
+  const [candidates, setCandidates] = useState<Candidate[]>([])
 
   // const [data, setData] = useState<CartContextType>({
   //   candidates: students,
@@ -25,7 +25,7 @@ export const CartContextProvider = ({ children }: ContextProviderProps) => {
 
   return (
     <CartContext.Provider
-      value={{ candidates: students, setCandidates: setStudents }}
+      value={{ candidates: candidates, setCandidates: setCandidates }}
     >
       {children}
     </CartContext.Provider>

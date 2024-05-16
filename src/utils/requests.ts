@@ -1,7 +1,7 @@
 import { FormData } from "@/types/matching"
-import { Student } from "@/types/student"
+import { Candidate } from "@/types/student"
 
-export async function sendEmail(formData: FormData, student: Student) {
+export async function sendEmail(formData: FormData, candidate: Candidate) {
   const headers = {
     method: "POST",
     body: JSON.stringify({
@@ -9,7 +9,7 @@ export async function sendEmail(formData: FormData, student: Student) {
       template_id: "template_iygm9r6",
       user_id: "q8_BFWgdPokWRpcMX",
       template_params: {
-        name: student.firstName,
+        name: candidate.firstName,
         founder_name: formData.recruiterName,
         company_name: formData.companyName,
         linkedin_url: formData.recruiterLinkedIn,
